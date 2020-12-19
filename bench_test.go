@@ -246,7 +246,7 @@ func init() {
 		api.test = strings.Replace(path, "{", "", -1)
 	}
 
-	calcMemStats(func() {
+	getStates(func() {
 		h := func(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte(r.URL.Path))
 		}
@@ -254,13 +254,13 @@ func init() {
 		muxT = New(false, true, false, nil, nil)
 		for _, api := range apis {
 			if err := muxT.HandleFunc(api.routeItem, h, api.method); err != nil {
-				fmt.Println("calcMemStats:", err)
+				fmt.Println("getStates:", err)
 			}
 		}
 	})
 }
 
-func calcMemStats(load func()) {
+func getStates(load func()) {
 	stats := &runtime.MemStats{}
 
 	runtime.GC()
@@ -292,6 +292,6 @@ func benchGithubAPI(b *testing.B, srv http.Handler) {
 	}
 }
 
-func BenchmarkGithubAPI_mux(b *testing.B) {
+func BenchmarkGithubAPI(b *testing.B) {
 	benchGithubAPI(b, muxT)
 }
