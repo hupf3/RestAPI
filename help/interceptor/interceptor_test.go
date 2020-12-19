@@ -13,16 +13,10 @@ func TestInterceptors(t *testing.T) {
 		Register(MatchAny)
 	})
 
-	a.NotError(Register(MatchWord, "[a-zA-Z0-9]+", "word1", "word2"))
-	a.Error(Register(MatchWord, "[a-zA-Z0-9]+")) // 已经存在
-	_, found := Get("word1")
+	a.NotError(Register(MatchWord, "[a-zA-Z0-9]+", "hupf"))
+	a.Error(Register(MatchWord, "[a-zA-Z0-9]+"))
+	_, found := Get("hupf")
 	a.True(found)
-	_, found = Get("[a-zA-Z0-9]+")
-	a.True(found)
-
-	Deregister("word1", "word2")
-	_, found = Get("word1")
-	a.False(found)
 	_, found = Get("[a-zA-Z0-9]+")
 	a.True(found)
 }

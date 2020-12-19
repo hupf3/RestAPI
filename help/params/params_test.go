@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: MIT
-
 package params
 
 import (
@@ -40,125 +38,60 @@ func TestParams_String(t *testing.T) {
 	a := assert.New(t)
 
 	ps := getParams(map[string]string{
-		"key1": "1",
+		"key": "1",
 	}, a)
 
-	val, err := ps.String("key1")
+	val, err := ps.String("key")
 	a.NotError(err).Equal(val, "1")
-	a.True(ps.Exists("key1"))
-	a.Equal(ps.MustString("key1", "-9"), "1")
+	a.True(ps.Exists("key"))
+	a.Equal(ps.MustString("key", "2"), "1")
 
-	// 不存在
-	val, err = ps.String("k5")
-	a.ErrorType(err, ErrParamNotExists).Equal(val, "")
-	a.False(ps.Exists("k5"))
-	a.Equal(ps.MustString("k5", "-10"), "-10")
 }
 
 func TestParams_Int(t *testing.T) {
 	a := assert.New(t)
 
 	ps := getParams(map[string]string{
-		"key1": "1",
-		"key2": "a2",
+		"key": "1",
 	}, a)
 
-	val, err := ps.Int("key1")
+	val, err := ps.Int("key")
 	a.NotError(err).Equal(val, 1)
-	a.Equal(ps.MustInt("key1", -9), 1)
-
-	// 无法转换
-	val, err = ps.Int("key2")
-	a.Error(err).Equal(val, 0)
-	a.Equal(ps.MustInt("key2", -9), -9)
-
-	// 不存在
-	val, err = ps.Int("k5")
-	a.ErrorType(err, ErrParamNotExists).Equal(val, 0)
-	a.Equal(ps.MustInt("k5", -10), -10)
+	a.Equal(ps.MustInt("key", 2), 1)
 }
 
 func TestParams_Uint(t *testing.T) {
 	a := assert.New(t)
 
 	ps := getParams(map[string]string{
-		"key1": "1",
-		"key2": "a2",
-		"key3": "-1",
+		"key": "1",
 	}, a)
 
-	val, err := ps.Uint("key1")
+	val, err := ps.Uint("key")
 	a.NotError(err).Equal(val, 1)
-	a.Equal(ps.MustUint("key1", 9), 1)
-
-	// 无法转换
-	val, err = ps.Uint("key2")
-	a.Error(err).Equal(val, 0)
-	a.Equal(ps.MustUint("key2", 9), 9)
-
-	// 负数
-	val, err = ps.Uint("key3")
-	a.Error(err).Equal(val, 0)
-	a.Equal(ps.MustUint("key3", 9), 9)
-
-	// 不存在
-	val, err = ps.Uint("k5")
-	a.ErrorType(err, ErrParamNotExists).Equal(val, 0)
-	a.Equal(ps.MustUint("k5", 10), 10)
+	a.Equal(ps.MustUint("key", 9), 1)
 }
 
 func TestParams_Bool(t *testing.T) {
 	a := assert.New(t)
 
 	ps := getParams(map[string]string{
-		"key1": "true",
-		"key2": "0",
-		"key3": "a3",
+		"key": "true",
 	}, a)
 
-	val, err := ps.Bool("key1")
+	val, err := ps.Bool("key")
 	a.NotError(err).True(val)
-	a.True(ps.MustBool("key1", false))
-
-	val, err = ps.Bool("key2")
-	a.NotError(err).False(val)
-	a.False(ps.MustBool("key2", true))
-
-	// 无法转换
-	val, err = ps.Bool("key3")
-	a.Error(err).False(val)
-	a.True(ps.MustBool("key3", true))
-
-	// 不存在
-	val, err = ps.Bool("k5")
-	a.ErrorType(err, ErrParamNotExists).False(val)
-	a.True(ps.MustBool("k5", true))
+	a.True(ps.MustBool("key", false))
 }
 
 func TestParams_Float(t *testing.T) {
 	a := assert.New(t)
 
 	ps := getParams(map[string]string{
-		"key1": "1",
-		"key2": "a2",
-		"key3": "1.1",
+		"key": "1",
 	}, a)
 
-	val, err := ps.Float("key1")
+	val, err := ps.Float("key")
 	a.NotError(err).Equal(val, 1.0)
-	a.Equal(ps.MustFloat("key1", -9.0), 1.0)
-
-	val, err = ps.Float("key3")
-	a.NotError(err).Equal(val, 1.1)
-	a.Equal(ps.MustFloat("key3", -9.0), 1.1)
-
-	// 无法转换
-	val, err = ps.Float("key2")
-	a.Error(err).Equal(val, 0.0)
-	a.Equal(ps.MustFloat("key2", -9.0), -9.0)
-
-	// 不存在
-	val, err = ps.Float("k5")
-	a.ErrorType(err, ErrParamNotExists).Equal(val, 0.0)
-	a.Equal(ps.MustFloat("k5", -10.0), -10.0)
+	a.Equal(ps.MustFloat("key", 2.0), 1.0)
 }
