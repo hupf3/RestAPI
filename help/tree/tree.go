@@ -1,12 +1,11 @@
-// Package tree 提供了以树形结构保存路由项的相关操作。
 package tree
 
 import (
 	"net/http"
 
 	"github.com/hupf3/RestAPI/help/handlers"
-	"github.com/hupf3/RestAPI/help/syntax"
 	"github.com/hupf3/RestAPI/help/params"
+	"github.com/hupf3/RestAPI/help/syntax"
 )
 
 // 树的形式存储路由

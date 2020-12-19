@@ -1,4 +1,3 @@
-// Package syntax 负责处理路由语法
 package syntax
 
 import (

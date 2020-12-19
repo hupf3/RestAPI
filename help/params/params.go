@@ -1,4 +1,3 @@
-// Package params 获取和转换路由中的参数信息
 package params
 
 import (
