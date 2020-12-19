@@ -1,0 +1,1709 @@
+using module mode; GOMOD=/Users/hupf/Desktop/RestAPI/go.mod
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>mux - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.15.2";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package mux
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/hupf3/RestAPI"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#IsWell">func IsWell(pattern string) error</a></dd>
+			
+				
+				<dd><a href="#Methods">func Methods() []string</a></dd>
+			
+				
+				<dd><a href="#Params">func Params(r *http.Request) params.Params</a></dd>
+			
+			
+				
+				<dd><a href="#Hosts">type Hosts</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewHosts">func NewHosts(domain ...string) *Hosts</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Hosts.Add">func (hs *Hosts) Add(domain ...string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Hosts.Delete">func (hs *Hosts) Delete(domain string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Hosts.Match">func (hs *Hosts) Match(r *http.Request) bool</a></dd>
+				
+			
+				
+				<dd><a href="#Matcher">type Matcher</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Mux">type Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Default">func Default() *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#New">func New(disableOptions, disableHead, skipCleanPath bool, notFound, methodNotAllowed http.HandlerFunc) *Mux</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.All">func (mux *Mux) All(ignoreHead, ignoreOptions bool) []*Router</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Any">func (mux *Mux) Any(pattern string, h http.Handler) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.AnyFunc">func (mux *Mux) AnyFunc(pattern string, fun http.HandlerFunc) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Clean">func (mux *Mux) Clean() *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Delete">func (mux *Mux) Delete(pattern string, h http.Handler) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.DeleteFunc">func (mux *Mux) DeleteFunc(pattern string, fun http.HandlerFunc) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Get">func (mux *Mux) Get(pattern string, h http.Handler) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.GetFunc">func (mux *Mux) GetFunc(pattern string, fun http.HandlerFunc) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Handle">func (mux *Mux) Handle(pattern string, h http.Handler, methods ...string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.HandleFunc">func (mux *Mux) HandleFunc(pattern string, fun http.HandlerFunc, methods ...string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Name">func (mux *Mux) Name(name, pattern string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.NewMux">func (mux *Mux) NewMux(name string, matcher Matcher) (*Mux, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Options">func (mux *Mux) Options(pattern string, allow string) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Patch">func (mux *Mux) Patch(pattern string, h http.Handler) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.PatchFunc">func (mux *Mux) PatchFunc(pattern string, fun http.HandlerFunc) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Post">func (mux *Mux) Post(pattern string, h http.Handler) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.PostFunc">func (mux *Mux) PostFunc(pattern string, fun http.HandlerFunc) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Prefix">func (mux *Mux) Prefix(prefix string) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Put">func (mux *Mux) Put(pattern string, h http.Handler) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.PutFunc">func (mux *Mux) PutFunc(pattern string, fun http.HandlerFunc) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Remove">func (mux *Mux) Remove(pattern string, methods ...string) *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.Resource">func (mux *Mux) Resource(pattern string) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.ServeHTTP">func (mux *Mux) ServeHTTP(w http.ResponseWriter, r *http.Request)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.SetAllow">func (mux *Mux) SetAllow(pattern string, allow string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mux.URL">func (mux *Mux) URL(name string, params map[string]string) (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Prefix">type Prefix</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Any">func (p *Prefix) Any(pattern string, h http.Handler) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.AnyFunc">func (p *Prefix) AnyFunc(pattern string, fun http.HandlerFunc) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Clean">func (p *Prefix) Clean() *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Delete">func (p *Prefix) Delete(pattern string, h http.Handler) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.DeleteFunc">func (p *Prefix) DeleteFunc(pattern string, fun http.HandlerFunc) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Get">func (p *Prefix) Get(pattern string, h http.Handler) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.GetFunc">func (p *Prefix) GetFunc(pattern string, fun http.HandlerFunc) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Handle">func (p *Prefix) Handle(pattern string, h http.Handler, methods ...string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.HandleFunc">func (p *Prefix) HandleFunc(pattern string, fun http.HandlerFunc, methods ...string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Mux">func (p *Prefix) Mux() *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Name">func (p *Prefix) Name(name, pattern string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Options">func (p *Prefix) Options(pattern string, allow string) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Patch">func (p *Prefix) Patch(pattern string, h http.Handler) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.PatchFunc">func (p *Prefix) PatchFunc(pattern string, fun http.HandlerFunc) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Post">func (p *Prefix) Post(pattern string, h http.Handler) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.PostFunc">func (p *Prefix) PostFunc(pattern string, fun http.HandlerFunc) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Prefix">func (p *Prefix) Prefix(prefix string) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Put">func (p *Prefix) Put(pattern string, h http.Handler) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.PutFunc">func (p *Prefix) PutFunc(pattern string, fun http.HandlerFunc) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Remove">func (p *Prefix) Remove(pattern string, methods ...string) *Prefix</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.Resource">func (p *Prefix) Resource(pattern string) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.SetAllow">func (p *Prefix) SetAllow(pattern string, allow string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prefix.URL">func (p *Prefix) URL(name string, params map[string]string) (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Resource">type Resource</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Any">func (r *Resource) Any(h http.Handler) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.AnyFunc">func (r *Resource) AnyFunc(fun http.HandlerFunc) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Clean">func (r *Resource) Clean() *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Delete">func (r *Resource) Delete(h http.Handler) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.DeleteFunc">func (r *Resource) DeleteFunc(fun http.HandlerFunc) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Get">func (r *Resource) Get(h http.Handler) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.GetFunc">func (r *Resource) GetFunc(fun http.HandlerFunc) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Handle">func (r *Resource) Handle(h http.Handler, methods ...string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.HandleFunc">func (r *Resource) HandleFunc(fun http.HandlerFunc, methods ...string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Mux">func (r *Resource) Mux() *Mux</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Name">func (r *Resource) Name(name string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Options">func (r *Resource) Options(allow string) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Patch">func (r *Resource) Patch(h http.Handler) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.PatchFunc">func (r *Resource) PatchFunc(fun http.HandlerFunc) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Post">func (r *Resource) Post(h http.Handler) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.PostFunc">func (r *Resource) PostFunc(fun http.HandlerFunc) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Put">func (r *Resource) Put(h http.Handler) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.PutFunc">func (r *Resource) PutFunc(fun http.HandlerFunc) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.Remove">func (r *Resource) Remove(methods ...string) *Resource</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.SetAllow">func (r *Resource) SetAllow(allow string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Resource.URL">func (r *Resource) URL(params map[string]string) (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Router">type Router</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/hupf3/RestAPI/match.go">match.go</a>
+			
+				<a href="/src/github.com/hupf3/RestAPI/mux.go">mux.go</a>
+			
+				<a href="/src/github.com/hupf3/RestAPI/prefix.go">prefix.go</a>
+			
+				<a href="/src/github.com/hupf3/RestAPI/resource.go">resource.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+报错信息
+</p>
+
+				<pre>var <span id="ErrNameExists">ErrNameExists</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;存在相同名称的路由项！&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="IsWell">func <a href="/src/github.com/hupf3/RestAPI/mux.go?s=6371:6404#L281">IsWell</a>
+				<a class="permalink" href="#IsWell">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsWell(pattern <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+判断语法是否正确
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Methods">func <a href="/src/github.com/hupf3/RestAPI/mux.go?s=6483:6506#L287">Methods</a>
+				<a class="permalink" href="#Methods">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Methods() []<a href="/pkg/builtin/#string">string</a></pre>
+			<p>
+返回所有请求方法
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Params">func <a href="/src/github.com/hupf3/RestAPI/mux.go?s=6273:6315#L276">Params</a>
+				<a class="permalink" href="#Params">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Params(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>) <a href="/pkg/github.com/hupf3/RestAPI/help/params/">params</a>.<a href="/pkg/github.com/hupf3/RestAPI/help/params/#Params">Params</a></pre>
+			<p>
+路由的参数集合
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Hosts">type <a href="/src/github.com/hupf3/RestAPI/match.go?s=267:351#L8">Hosts</a>
+				<a class="permalink" href="#Hosts">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+域名匹配
+</p>
+
+			<pre>type Hosts struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewHosts">func <a href="/src/github.com/hupf3/RestAPI/match.go?s=380:418#L14">NewHosts</a>
+					<a class="permalink" href="#NewHosts">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewHosts(domain ...<a href="/pkg/builtin/#string">string</a>) *<a href="#Hosts">Hosts</a></pre>
+				<p>
+声明一个新的Hosts
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Hosts.Add">func (*Hosts) <a href="/src/github.com/hupf3/RestAPI/match.go?s=1746:1784#L81">Add</a>
+					<a class="permalink" href="#Hosts.Add">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (hs *<a href="#Hosts">Hosts</a>) Add(domain ...<a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+添加新的域名
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Hosts.Delete">func (*Hosts) <a href="/src/github.com/hupf3/RestAPI/match.go?s=2185:2223#L98">Delete</a>
+					<a class="permalink" href="#Hosts.Delete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (hs *<a href="#Hosts">Hosts</a>) Delete(domain <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+删除域名
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Hosts.Match">func (*Hosts) <a href="/src/github.com/hupf3/RestAPI/match.go?s=1435:1479#L63">Match</a>
+					<a class="permalink" href="#Hosts.Match">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (hs *<a href="#Hosts">Hosts</a>) Match(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Matcher">type <a href="/src/github.com/hupf3/RestAPI/match.go?s=196:249#L3">Matcher</a>
+				<a class="permalink" href="#Matcher">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+验证请求是否符合要求
+</p>
+
+			<pre>type Matcher interface {
+    Match(*<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>) <a href="/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Mux">type <a href="/src/github.com/hupf3/RestAPI/mux.go?s=452:855#L18">Mux</a>
+				<a class="permalink" href="#Mux">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+路由匹配
+</p>
+
+			<pre>type Mux struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Default">func <a href="/src/github.com/hupf3/RestAPI/mux.go?s=1195:1214#L43">Default</a>
+					<a class="permalink" href="#Default">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Default() *<a href="#Mux">Mux</a></pre>
+				<p>
+默认参数
+</p>
+
+				
+				
+			
+				
+				<h3 id="New">func <a href="/src/github.com/hupf3/RestAPI/mux.go?s=1288:1395#L48">New</a>
+					<a class="permalink" href="#New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func New(disableOptions, disableHead, skipCleanPath <a href="/pkg/builtin/#bool">bool</a>, notFound, methodNotAllowed <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				<p>
+声明一个新的Mux
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Mux.All">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=1987:2048#L82">All</a>
+					<a class="permalink" href="#Mux.All">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) All(ignoreHead, ignoreOptions <a href="/pkg/builtin/#bool">bool</a>) []*<a href="#Router">Router</a></pre>
+				<p>
+返回所有路由项
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.Any">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4234:4290#L191">Any</a>
+					<a class="permalink" href="#Mux.Any">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Any(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.AnyFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=5243:5309#L223">AnyFunc</a>
+					<a class="permalink" href="#Mux.AnyFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) AnyFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Clean">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=1847:1875#L72">Clean</a>
+					<a class="permalink" href="#Mux.Clean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Clean() *<a href="#Mux">Mux</a></pre>
+				<p>
+清除路由项
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.Delete">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=3897:3956#L179">Delete</a>
+					<a class="permalink" href="#Mux.Delete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Delete(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.DeleteFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4983:5052#L215">DeleteFunc</a>
+					<a class="permalink" href="#Mux.DeleteFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) DeleteFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Get">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=3677:3733#L171">Get</a>
+					<a class="permalink" href="#Mux.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Get(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.GetFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4606:4672#L203">GetFunc</a>
+					<a class="permalink" href="#Mux.GetFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) GetFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Handle">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=2494:2573#L102">Handle</a>
+					<a class="permalink" href="#Mux.Handle">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Handle(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>, methods ...<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+添加一个新的路由
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.HandleFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4327:4416#L195">HandleFunc</a>
+					<a class="permalink" href="#Mux.HandleFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) HandleFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>, methods ...<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Name">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=5775:5823#L250">Name</a>
+					<a class="permalink" href="#Mux.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Name(name, pattern <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+命名路由项
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.NewMux">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/match.go?s=583:648#L26">NewMux</a>
+					<a class="permalink" href="#Mux.NewMux">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) NewMux(name <a href="/pkg/builtin/#string">string</a>, matcher <a href="#Matcher">Matcher</a>) (*<a href="#Mux">Mux</a>, <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>
+添加子路由组
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.Options">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=2776:2834#L112">Options</a>
+					<a class="permalink" href="#Mux.Options">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Options(pattern <a href="/pkg/builtin/#string">string</a>, allow <a href="/pkg/builtin/#string">string</a>) *<a href="#Mux">Mux</a></pre>
+				<p>
+设置报头的值
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.Patch">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4121:4179#L187">Patch</a>
+					<a class="permalink" href="#Mux.Patch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Patch(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.PatchFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=5114:5182#L219">PatchFunc</a>
+					<a class="permalink" href="#Mux.PatchFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) PatchFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Post">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=3786:3843#L175">Post</a>
+					<a class="permalink" href="#Mux.Post">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Post(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.PostFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4856:4923#L211">PostFunc</a>
+					<a class="permalink" href="#Mux.PostFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) PostFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Prefix">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=3481:3526#L126">Prefix</a>
+					<a class="permalink" href="#Mux.Prefix">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Prefix(prefix <a href="/pkg/builtin/#string">string</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Put">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4012:4068#L183">Put</a>
+					<a class="permalink" href="#Mux.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Put(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.PutFunc">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=4731:4797#L207">PutFunc</a>
+					<a class="permalink" href="#Mux.PutFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) PutFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Mux">Mux</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.Remove">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=2348:2410#L96">Remove</a>
+					<a class="permalink" href="#Mux.Remove">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Remove(pattern <a href="/pkg/builtin/#string">string</a>, methods ...<a href="/pkg/builtin/#string">string</a>) *<a href="#Mux">Mux</a></pre>
+				<p>
+移除指定路由
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.Resource">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=2473:2523#L103">Resource</a>
+					<a class="permalink" href="#Mux.Resource">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) Resource(pattern <a href="/pkg/builtin/#string">string</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.ServeHTTP">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=5352:5417#L227">ServeHTTP</a>
+					<a class="permalink" href="#Mux.ServeHTTP">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) ServeHTTP(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Mux.SetAllow">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=2646:2706#L107">SetAllow</a>
+					<a class="permalink" href="#Mux.SetAllow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) SetAllow(pattern <a href="/pkg/builtin/#string">string</a>, allow <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+设置报头的值
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Mux.URL">func (*Mux) <a href="/src/github.com/hupf3/RestAPI/mux.go?s=6016:6090#L263">URL</a>
+					<a class="permalink" href="#Mux.URL">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mux *<a href="#Mux">Mux</a>) URL(name <a href="/pkg/builtin/#string">string</a>, params map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+根据参数生成URL地址
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Prefix">type <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=92:142#L1">Prefix</a>
+				<a class="permalink" href="#Prefix">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+将前缀一样的路由项统一起来
+</p>
+
+			<pre>type Prefix struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Prefix.Any">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=972:1032#L34">Any</a>
+					<a class="permalink" href="#Prefix.Any">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Any(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.AnyFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1714:1784#L58">AnyFunc</a>
+					<a class="permalink" href="#Prefix.AnyFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) AnyFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Clean">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1951:1983#L67">Clean</a>
+					<a class="permalink" href="#Prefix.Clean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Clean() *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Delete">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=629:692#L22">Delete</a>
+					<a class="permalink" href="#Prefix.Delete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Delete(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.DeleteFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1450:1523#L50">DeleteFunc</a>
+					<a class="permalink" href="#Prefix.DeleteFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) DeleteFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Get">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=405:465#L14">Get</a>
+					<a class="permalink" href="#Prefix.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Get(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.GetFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1067:1137#L38">GetFunc</a>
+					<a class="permalink" href="#Prefix.GetFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) GetFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Handle">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=2027:2107#L72">Handle</a>
+					<a class="permalink" href="#Prefix.Handle">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Handle(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>, methods ...<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.HandleFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=2340:2430#L84">HandleFunc</a>
+					<a class="permalink" href="#Prefix.HandleFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) HandleFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>, methods ...<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Mux">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=3604:3631#L134">Mux</a>
+					<a class="permalink" href="#Prefix.Mux">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Mux() *<a href="#Mux">Mux</a></pre>
+				<p>
+返回相关Mux
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Name">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=2750:2799#L98">Name</a>
+					<a class="permalink" href="#Prefix.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Name(name, pattern <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Name 为一条路由项命名
+</p>
+<p>
+URL 可以通过此属性来生成地址。
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Options">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=259:321#L7">Options</a>
+					<a class="permalink" href="#Prefix.Options">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Options(pattern <a href="/pkg/builtin/#string">string</a>, allow <a href="/pkg/builtin/#string">string</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Patch">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=857:919#L30">Patch</a>
+					<a class="permalink" href="#Prefix.Patch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Patch(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.PatchFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1583:1655#L54">PatchFunc</a>
+					<a class="permalink" href="#Prefix.PatchFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) PatchFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Post">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=516:577#L18">Post</a>
+					<a class="permalink" href="#Prefix.Post">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Post(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.PostFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1321:1392#L46">PostFunc</a>
+					<a class="permalink" href="#Prefix.PostFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) PostFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Prefix">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=3363:3409#L119">Prefix</a>
+					<a class="permalink" href="#Prefix.Prefix">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Prefix(prefix <a href="/pkg/builtin/#string">string</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Put">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=746:806#L26">Put</a>
+					<a class="permalink" href="#Prefix.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Put(pattern <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.PutFunc">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1194:1264#L42">PutFunc</a>
+					<a class="permalink" href="#Prefix.PutFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) PutFunc(pattern <a href="/pkg/builtin/#string">string</a>, fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Remove">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=1825:1891#L62">Remove</a>
+					<a class="permalink" href="#Prefix.Remove">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Remove(pattern <a href="/pkg/builtin/#string">string</a>, methods ...<a href="/pkg/builtin/#string">string</a>) *<a href="#Prefix">Prefix</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.Resource">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=2587:2638#L110">Resource</a>
+					<a class="permalink" href="#Prefix.Resource">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) Resource(pattern <a href="/pkg/builtin/#string">string</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.SetAllow">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=144:205#L3">SetAllow</a>
+					<a class="permalink" href="#Prefix.SetAllow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) SetAllow(pattern <a href="/pkg/builtin/#string">string</a>, allow <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Prefix.URL">func (*Prefix) <a href="/src/github.com/hupf3/RestAPI/prefix.go?s=3111:3186#L107">URL</a>
+					<a class="permalink" href="#Prefix.URL">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="#Prefix">Prefix</a>) URL(name <a href="/pkg/builtin/#string">string</a>, params map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+URL 根据参数生成地址
+</p>
+<p>
+name 为路由的名称，或是直接为路由项的定义内容，
+若 name 作为路由项定义，会加上 Prefix.prefix 作为前缀；
+params 为路由项中的参数，键名为参数名，键值为参数值。
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Resource">type <a href="/src/github.com/hupf3/RestAPI/resource.go?s=101:155#L1">Resource</a>
+				<a class="permalink" href="#Resource">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+资源地址的路由配置
+</p>
+
+			<pre>type Resource struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Resource.Any">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=838:886#L34">Any</a>
+					<a class="permalink" href="#Resource.Any">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Any(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.AnyFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1454:1512#L58">AnyFunc</a>
+					<a class="permalink" href="#Resource.AnyFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) AnyFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Clean">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1651:1687#L67">Clean</a>
+					<a class="permalink" href="#Resource.Clean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Clean() *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Delete">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=558:609#L22">Delete</a>
+					<a class="permalink" href="#Resource.Delete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Delete(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.DeleteFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1232:1293#L50">DeleteFunc</a>
+					<a class="permalink" href="#Resource.DeleteFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) DeleteFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Get">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=376:424#L14">Get</a>
+					<a class="permalink" href="#Resource.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Get(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.GetFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=912:970#L38">GetFunc</a>
+					<a class="permalink" href="#Resource.GetFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) GetFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Handle">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1728:1794#L72">Handle</a>
+					<a class="permalink" href="#Resource.Handle">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Handle(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>, methods ...<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.HandleFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1998:2074#L83">HandleFunc</a>
+					<a class="permalink" href="#Resource.HandleFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) HandleFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>, methods ...<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Mux">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=2729:2758#L118">Mux</a>
+					<a class="permalink" href="#Resource.Mux">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Mux() *<a href="#Mux">Mux</a></pre>
+				<p>
+返回 Mux
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Resource.Name">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=2282:2324#L95">Name</a>
+					<a class="permalink" href="#Resource.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Name(name <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Options">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=251:301#L7">Options</a>
+					<a class="permalink" href="#Resource.Options">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Options(allow <a href="/pkg/builtin/#string">string</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Patch">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=744:794#L30">Patch</a>
+					<a class="permalink" href="#Resource.Patch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Patch(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.PatchFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1344:1404#L54">PatchFunc</a>
+					<a class="permalink" href="#Resource.PatchFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) PatchFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Post">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=466:515#L18">Post</a>
+					<a class="permalink" href="#Resource.Post">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Post(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.PostFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1124:1183#L46">PostFunc</a>
+					<a class="permalink" href="#Resource.PostFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) PostFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Put">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=654:702#L26">Put</a>
+					<a class="permalink" href="#Resource.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Put(h <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.PutFunc">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1018:1076#L42">PutFunc</a>
+					<a class="permalink" href="#Resource.PutFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) PutFunc(fun <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#HandlerFunc">HandlerFunc</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.Remove">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=1544:1598#L62">Remove</a>
+					<a class="permalink" href="#Resource.Remove">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) Remove(methods ...<a href="/pkg/builtin/#string">string</a>) *<a href="#Resource">Resource</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.SetAllow">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=157:204#L3">SetAllow</a>
+					<a class="permalink" href="#Resource.SetAllow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) SetAllow(allow <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Resource.URL">func (*Resource) <a href="/src/github.com/hupf3/RestAPI/resource.go?s=2366:2430#L99">URL</a>
+					<a class="permalink" href="#Resource.URL">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#Resource">Resource</a>) URL(params map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Router">type <a href="/src/github.com/hupf3/RestAPI/mux.go?s=369:434#L12">Router</a>
+				<a class="permalink" href="#Router">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+返回参数
+</p>
+
+			<pre>type Router struct {
+<span id="Router.Name"></span>    Name   <a href="/pkg/builtin/#string">string</a>
+<span id="Router.Routes"></span>    Routes map[<a href="/pkg/builtin/#string">string</a>][]<a href="/pkg/builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="help/">help</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="help/handlers/">handlers</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="help/interceptor/">interceptor</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="help/params/">params</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="help/syntax/">syntax</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="help/tree/">tree</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.15.2.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
