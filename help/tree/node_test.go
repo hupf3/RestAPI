@@ -6,8 +6,8 @@ import (
 
 	"github.com/issue9/assert"
 
-	"github.com/hupf3/RestAPI/major/handlers"
-	"github.com/hupf3/RestAPI/major/syntax"
+	"github.com/hupf3/RestAPI/help/handlers"
+	"github.com/hupf3/RestAPI/help/syntax"
 )
 
 func TestNode_find(t *testing.T) {

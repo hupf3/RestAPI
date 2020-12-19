@@ -7,9 +7,9 @@ import (
 
 	"github.com/issue9/errwrap"
 
-	"github.com/hupf3/RestAPI/major/handlers"
-	"github.com/hupf3/RestAPI/major/syntax"
-	"github.com/hupf3/RestAPI/params"
+	"github.com/hupf3/RestAPI/help/handlers"
+	"github.com/hupf3/RestAPI/help/syntax"
+	"github.com/hupf3/RestAPI/help/params"
 )
 
 // 建立索引表大小

@@ -5,7 +5,7 @@ import (
 
 	"github.com/issue9/assert"
 
-	"github.com/hupf3/RestAPI/params"
+	"github.com/hupf3/RestAPI/help/params"
 )
 
 func TestNewSegment(t *testing.T) {

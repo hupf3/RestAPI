@@ -8,7 +8,7 @@ import (
 	"github.com/issue9/assert"
 	"github.com/issue9/assert/rest"
 
-	"github.com/hupf3/RestAPI/major/handlers"
+	"github.com/hupf3/RestAPI/help/handlers"
 )
 
 func buildHandler(code int) http.Handler {

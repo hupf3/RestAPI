@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/hupf3/RestAPI/major/handlers"
-	"github.com/hupf3/RestAPI/params"
+	"github.com/hupf3/RestAPI/help/handlers"
+	"github.com/hupf3/RestAPI/help/params"
 	"github.com/issue9/sliceutil"
 )
 

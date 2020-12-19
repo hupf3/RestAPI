@@ -4,8 +4,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/hupf3/RestAPI/interceptor"
-	"github.com/hupf3/RestAPI/params"
+	"github.com/hupf3/RestAPI/help/interceptor"
+	"github.com/hupf3/RestAPI/help/params"
 )
 
 // 路由项被拆分之后的内容

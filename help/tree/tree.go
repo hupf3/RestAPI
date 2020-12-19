@@ -4,9 +4,9 @@ package tree
 import (
 	"net/http"
 
-	"github.com/hupf3/RestAPI/major/handlers"
-	"github.com/hupf3/RestAPI/major/syntax"
-	"github.com/hupf3/RestAPI/params"
+	"github.com/hupf3/RestAPI/help/handlers"
+	"github.com/hupf3/RestAPI/help/syntax"
+	"github.com/hupf3/RestAPI/help/params"
 )
 
 // 树的形式存储路由
