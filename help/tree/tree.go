@@ -51,7 +51,7 @@ func (tree *Tree) Remove(pattern string, methods ...string) {
 	}
 }
 
-// 获取制定的节点
+// 获取指定的节点
 func (tree *Tree) getNode(pattern string) (*node, error) {
 	segs, err := syntax.Split(pattern)
 	if err != nil {

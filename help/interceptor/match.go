@@ -17,9 +17,6 @@ func init() {
 	}
 }
 
-// 匹配任意的非空内容
-func MatchAny(path string) bool { return len(path) > 0 }
-
 // 匹配数字
 func MatchDigit(path string) bool {
 	for _, c := range path {
@@ -39,3 +36,6 @@ func MatchWord(path string) bool {
 	}
 	return len(path) > 0
 }
+
+// 匹配任意的非空内容
+func MatchAny(path string) bool { return len(path) > 0 }

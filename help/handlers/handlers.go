@@ -47,7 +47,7 @@ var addAny = Methods[:len(Methods)-2]
 // 对应于每个请求方法的处理函数
 type Handlers struct {
 	handlers     map[string]http.Handler
-	optionsAllow string       // 报头内容。
+	optionsAllow string       // 报头内容
 	optionsState optionsState // 请求的处理方式
 	headState    headState
 }
