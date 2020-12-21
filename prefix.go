@@ -102,18 +102,12 @@ func (p *Prefix) handleFunc(pattern string, fun http.HandlerFunc, methods ...str
 	return p
 }
 
-// Name 为一条路由项命名
-//
-// URL 可以通过此属性来生成地址。
+// 命名
 func (p *Prefix) Name(name, pattern string) error {
 	return p.mux.Name(name, p.prefix+pattern)
 }
 
-// URL 根据参数生成地址
-//
-// name 为路由的名称，或是直接为路由项的定义内容，
-// 若 name 作为路由项定义，会加上 Prefix.prefix 作为前缀；
-// params 为路由项中的参数，键名为参数名，键值为参数值。
+// 生成URL
 func (p *Prefix) URL(name string, params map[string]string) (string, error) {
 	p.mux.namesMu.RLock()
 	pattern, found := p.mux.names[name]
